@@ -24,17 +24,142 @@
             @apply text-blue-100 hover:bg-white/10 hover:text-white border border-transparent; 
         }
 
-        /* Print Styles */
-        @media print {
-            @page { margin: 1cm; size: A4; }
-            body { background: white; color: black; -webkit-print-color-adjust: exact; }
-            header, .no-print { display: none !important; }
-            #view-calculadora, #view-elaboracion { display: block !important; }
+        /* =========================================================
+       ESTILOS DE IMPRESIÓN (FORMATO Y SALTOS CORREGIDOS)
+       ========================================================= */
+    @media print {
+        
+        /* 1. Configuración de página */
+        @page {
+            margin: 1.5cm;
+            size: A4 portrait;
         }
+
+        body {
+            background: white;
+            color: black;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            font-size: 10pt;
+        }
+
+        /* 2. Ocultar interfaz innecesaria */
+        header, 
+        .no-print, 
+        button, 
+        .tab-btn, 
+        .slide-in,
+        #btn-uci,
+        #btn-planta,
+        #alerts-box,
+        #results-container,
+        #elaboracion-empty {
+            display: none !important;
+            animation: none !important;
+        }
+
+        /* 3. Forzar visibilidad del contenido */
+        #view-calculadora, 
+        #view-elaboracion, 
+        #results-content, 
+        #elaboracion-content {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            max-width: none !important;
+            height: auto !important;
+            overflow: visible !important;
+        }
+
+        /* 4. EVITAR CORTES DE PÁGINA (SOLUCIÓN DEFINITIVA) */
+        /* Esto obliga al navegador a mover el bloque entero a la siguiente 
+           página si no cabe, en lugar de cortarlo por la mitad */
+        .bg-white, 
+        .bg-slate-50, 
+        .rounded-xl, 
+        .border,
+        #uci-fields,
+        #planta-fields {
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
+            display: block;
+        }
+
+        /* 5. Página 1: Calculadora */
+        #view-calculadora {
+            page-break-after: always;
+            break-after: page;
+            margin-bottom: 0;
+            display: block !important;
+        }
+        
+        /* Los hijos de la calculadora ocupan todo el ancho */
+        #view-calculadora > div {
+            width: 100% !important;
+            margin-bottom: 20px; /* Espacio para que no se peguen */
+        }
+
+        /* 6. Página 2: Elaboración */
+        #view-elaboracion {
+            page-break-before: always;
+            margin-top: 0;
+            display: block !important;
+        }
+
+        /* 7. Limpieza visual de Inputs */
+        .shadow-sm, .shadow-lg, .shadow-md, .shadow-xl {
+            box-shadow: none !important;
+            border: 1px solid #ccc !important;
+        }
+
+        input, select {
+            border: none !important;
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            font-weight: bold;
+            color: #000 !important;
+            appearance: none !important;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            width: auto !important;
+            text-align: right;
+        }
+
+        /* Asegurar contraste de texto */
+        .text-slate-600, .text-slate-500, .text-slate-400 {
+            color: #333 !important;
+        }
+
+        select {
+            text-overflow: unset;
+            white-space: normal;
+        }
+
+        input[type="checkbox"] {
+            border: 1px solid #000 !important;
+        }
+
+        /* 8. Cabecera de impresión */
+        .print-header {
+            display: block !important;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            width: 100%;
+        }
+    }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
+     <div class="hidden print-header p-4 mb-4">
+         <h1 class="text-2xl font-bold text-slate-800">INFORME DE NUTRICIÓN PARENTERAL</h1>
+         <p class="text-sm text-slate-500">Generado por NutriCalc Hospitalaria</p>
+         <div class="text-xs text-slate-400 mt-1" id="print-date"></div>
+    </div>
     <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-xl sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8">
