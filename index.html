@@ -160,12 +160,12 @@
          <p class="text-sm text-slate-500">Generado por NutriCalc Hospitalaria</p>
          <div class="text-xs text-slate-400 mt-1" id="print-date"></div>
     </div>
-    <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8">
-                <div class="flex items-center space-x-4 flex-shrink-0 w-full lg:w-auto justify-center lg:justify-start">
-                    <div class="bg-white p-2 rounded-xl shadow-lg transform hover:rotate-3 transition duration-500">
-                       <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <header class="bg-gradient-to-r from-blue-800 to-blue-600 text-white shadow-xl sticky top-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-2 py-2 md:px-4 md:py-3">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-3 lg:gap-8">
+                <div class="flex items-center space-x-3 w-full lg:w-auto justify-center lg:justify-start">
+                    <div class="bg-white p-2 rounded-xl shadow-lg flex-shrink-0">
+                        <svg class="w-8 h-8 md:w-10 md:h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="50" cy="50" r="48" fill="#2563EB" />
                             <rect x="35" y="20" width="30" height="60" rx="5" fill="white" />
                             <rect x="20" y="35" width="60" height="30" rx="5" fill="white" />
@@ -174,24 +174,26 @@
                         </svg>
                     </div>
                     <div>
-                        <h1 class="text-xl md:text-2xl font-bold tracking-tight text-white leading-tight">NutriCalc Hospitalaria</h1>
-                        <p class="text-xs text-blue-100 font-medium opacity-90 tracking-wide">Protocolo UCI & Planta según ESPEN</p>
+                        <h1 class="text-lg md:text-2xl font-bold tracking-tight text-white leading-tight">NutriCalc Hospitalaria</h1>
+                        <p class="text-[10px] md:text-xs text-blue-100 font-medium opacity-90 tracking-wide">Protocolo UCI & Planta según ESPEN</p>
                     </div>
                 </div>
 
-                <div class="flex space-x-3 bg-blue-900/30 p-1.5 rounded-2xl overflow-x-auto">
-                    <button onclick="switchTab('calculadora')" id="tab-calc" class="tab-btn active min-w-[140px]">
-                        <i class="fa-solid fa-calculator text-base"></i>
-                        <span>Calculadora</span>
-                    </button>
-                    <button onclick="switchTab('elaboracion')" id="tab-elab" class="tab-btn inactive min-w-[180px]">
-                        <i class="fa-solid fa-file-prescription text-base"></i>
-                        <span>Elaboración</span>
-                    </button>
-                    <button onclick="switchTab('bibliografia')" id="tab-biblio" class="tab-btn inactive min-w-[130px]">
-                        <i class="fa-solid fa-book-medical text-base"></i>
-                        <span>Bibliografía</span>
-                    </button>
+                <div class="w-full lg:w-auto overflow-x-auto pb-1 lg:pb-0 no-scrollbar">
+                    <div class="flex space-x-2 md:space-x-3 bg-blue-900/30 p-1.5 rounded-2xl min-w-max mx-auto lg:mx-0">
+                        <button onclick="switchTab('calculadora')" id="tab-calc" class="tab-btn active min-w-[110px] md:min-w-[140px] px-4 py-2 md:px-6 md:py-3 text-xs md:text-sm">
+                            <i class="fa-solid fa-calculator text-sm md:text-base"></i>
+                            <span>Calculadora</span>
+                        </button>
+                        <button onclick="switchTab('elaboracion')" id="tab-elab" class="tab-btn inactive min-w-[130px] md:min-w-[180px] px-4 py-2 md:px-6 md:py-3 text-xs md:text-sm">
+                            <i class="fa-solid fa-file-prescription text-sm md:text-base"></i>
+                            <span>Elaboración</span>
+                        </button>
+                        <button onclick="switchTab('bibliografia')" id="tab-biblio" class="tab-btn inactive min-w-[100px] md:min-w-[130px] px-4 py-2 md:px-6 md:py-3 text-xs md:text-sm">
+                            <i class="fa-solid fa-book-medical text-sm md:text-base"></i>
+                            <span>Bibliografía</span>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="hidden lg:block flex-shrink-0">
@@ -204,14 +206,14 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
+    <main class="max-w-7xl mx-auto px-2 py-4 md:px-4 md:py-8 flex-grow w-full">
         
         <div id="view-calculadora" class="grid grid-cols-1 lg:grid-cols-12 gap-8 slide-in">
             
             <div class="lg:col-span-5 space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                     <h2 class="text-lg font-semibold mb-4 text-blue-800 border-b pb-2"><i class="fa-solid fa-user-injured mr-2"></i>Datos del Paciente</h2>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                         <div>
                             <label class="block text-sm font-medium text-slate-600 mb-1">NHC</label>
                             <input type="text" id="nhc" class="w-full border-slate-300 rounded-md shadow-sm p-2 border focus:ring-blue-500 focus:border-blue-500" placeholder="Hist. Clínica">
@@ -661,56 +663,56 @@
 
                     <div class="grid gap-6">
                     
-                        <div class="border border-red-100 rounded-xl p-4 bg-red-50/30">
-                            <h4 class="font-bold text-red-700 mb-3 flex items-center">
+                        <div class="border border-red-100 rounded-xl p-3 md:p-4 bg-red-50/30">
+                            <h4 class="font-bold text-red-700 mb-2 md:mb-3 flex items-center text-sm md:text-base">
                                 <i class="fa-solid fa-dna mr-2"></i>Proteínas (Aminoácidos)
                             </h4>
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-end">
                                 <div class="md:col-span-8">
                                     <label class="block text-xs font-medium text-slate-500 mb-1">Producto Comercial</label>
-                                    <select id="sel-prot" class="w-full border-slate-300 rounded-lg shadow-sm p-2.5 border bg-white text-sm focus:ring-red-500 focus:border-red-500" onchange="calculateCompounding()">
+                                    <select id="sel-prot" class="w-full border-slate-300 rounded-lg shadow-sm p-2 md:p-2.5 border bg-white text-xs md:text-sm focus:ring-red-500 focus:border-red-500" onchange="calculateCompounding()">
                                         <option value="">Seleccionar Aminoácido...</option>
                                     </select>
                                 </div>
                                 <div class="md:col-span-4">
-                                    <label class="block text-xs font-medium text-slate-500 mb-1">Volumen (ml)</label>
-                                    <input type="number" id="vol-prot" class="w-full border-slate-300 rounded-lg shadow-sm p-2.5 border bg-white text-sm" placeholder="0" readonly>
+                                    <label class="block text-xs font-medium text-slate-500 mb-1 mt-2 md:mt-0">Volumen (ml)</label>
+                                    <input type="number" id="vol-prot" class="w-full border-slate-300 rounded-lg shadow-sm p-2 md:p-2.5 border bg-white text-sm" placeholder="0" readonly>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="border border-blue-100 rounded-xl p-4 bg-blue-50/30">
-                            <h4 class="font-bold text-blue-700 mb-3 flex items-center">
+                        <div class="border border-blue-100 rounded-xl p-3 md:p-4 bg-blue-50/30">
+                            <h4 class="font-bold text-blue-700 mb-2 md:mb-3 flex items-center text-sm md:text-base">
                                 <i class="fa-solid fa-cube mr-2"></i>Hidratos de Carbono (Glucosa)
                             </h4>
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-end">
                                 <div class="md:col-span-8">
                                     <label class="block text-xs font-medium text-slate-500 mb-1">Producto Comercial</label>
-                                    <select id="sel-hc" class="w-full border-slate-300 rounded-lg shadow-sm p-2.5 border bg-white text-sm focus:ring-blue-500 focus:border-blue-500" onchange="calculateCompounding()">
+                                    <select id="sel-hc" class="w-full border-slate-300 rounded-lg shadow-sm p-2 md:p-2.5 border bg-white text-xs md:text-sm focus:ring-blue-500 focus:border-blue-500" onchange="calculateCompounding()">
                                         <option value="">Seleccionar Glucosa...</option>
                                     </select>
                                 </div>
                                 <div class="md:col-span-4">
-                                    <label class="block text-xs font-medium text-slate-500 mb-1">Volumen (ml)</label>
-                                    <input type="number" id="vol-hc" class="w-full border-slate-300 rounded-lg shadow-sm p-2.5 border bg-white text-sm" placeholder="0" readonly>
+                                    <label class="block text-xs font-medium text-slate-500 mb-1 mt-2 md:mt-0">Volumen (ml)</label>
+                                    <input type="number" id="vol-hc" class="w-full border-slate-300 rounded-lg shadow-sm p-2 md:p-2.5 border bg-white text-sm" placeholder="0" readonly>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="border border-yellow-100 rounded-xl p-4 bg-yellow-50/30">
-                            <h4 class="font-bold text-yellow-700 mb-3 flex items-center">
+                        <div class="border border-yellow-100 rounded-xl p-3 md:p-4 bg-yellow-50/30">
+                            <h4 class="font-bold text-yellow-700 mb-2 md:mb-3 flex items-center text-sm md:text-base">
                                 <i class="fa-solid fa-oil-can mr-2"></i>Lípidos (Emulsión)
                             </h4>
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-end">
                                 <div class="md:col-span-8">
                                     <label class="block text-xs font-medium text-slate-500 mb-1">Producto Comercial</label>
-                                    <select id="sel-lip" class="w-full border-slate-300 rounded-lg shadow-sm p-2.5 border bg-white text-sm focus:ring-yellow-500 focus:border-yellow-500" onchange="calculateCompounding()">
+                                    <select id="sel-lip" class="w-full border-slate-300 rounded-lg shadow-sm p-2 md:p-2.5 border bg-white text-xs md:text-sm focus:ring-yellow-500 focus:border-yellow-500" onchange="calculateCompounding()">
                                         <option value="">Seleccionar Lípidos...</option>
                                     </select>
                                 </div>
                                 <div class="md:col-span-4">
-                                    <label class="block text-xs font-medium text-slate-500 mb-1">Volumen (ml)</label>
-                                    <input type="number" id="vol-lip" class="w-full border-slate-300 rounded-lg shadow-sm p-2.5 border bg-white text-sm" placeholder="0" readonly>
+                                    <label class="block text-xs font-medium text-slate-500 mb-1 mt-2 md:mt-0">Volumen (ml)</label>
+                                    <input type="number" id="vol-lip" class="w-full border-slate-300 rounded-lg shadow-sm p-2 md:p-2.5 border bg-white text-sm" placeholder="0" readonly>
                                 </div>
                             </div>
                         </div>
