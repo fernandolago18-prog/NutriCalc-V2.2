@@ -25,17 +25,25 @@
         }
 
         /* =========================================================
-       ESTILOS DE IMPRESIÓN MEJORADOS (SIN CORTES BRUSCOS)
+       ESTILOS DE IMPRESIÓN MEJORADOS
        ========================================================= */
     @media print {
         @page {
-            margin: 1cm;
+            /* CAMBIO 1: Ponemos el margen a 0 o muy pequeño.
+               Esto obliga al navegador a quitar sus encabezados automáticos */
+            margin: 0; 
             size: A4 portrait;
         }
 
         /* Ocultar interfaz */
         body > *:not(#printable-area) {
             display: none !important;
+        }
+
+        body {
+            /* Aseguramos que el body no tenga margen extra */
+            margin: 0;
+            padding: 0;
         }
 
         /* Mostrar reporte */
@@ -46,6 +54,11 @@
             font-size: 11pt;
             line-height: 1.3;
             width: 100%;
+            
+            /* CAMBIO 2: Movemos el margen aquí como padding. 
+               Así tu contenido sigue centrado y legible, pero sin la fecha del navegador */
+            padding: 1.5cm; 
+            box-sizing: border-box; /* Para que el padding no rompa el ancho */
         }
 
         /* BLOQUES PRINCIPALES: Evita que se corten por la mitad */
