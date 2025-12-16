@@ -2592,7 +2592,7 @@ function prepareAndPrint() {
             // --- B. GENERACIÓN DE ETIQUETAS (CON CADUCIDAD AUTOMÁTICA) ---
             const labelsContainer = document.getElementById('labels-page-content');
             
-            // 1. Calcular Fecha de Caducidad (+4 días)
+            // 1. Calcular Fecha de Caducidad
             const expDate = new Date();
             expDate.setDate(expDate.getDate() + 4);
             const expStr = expDate.toLocaleDateString(); // Formato local (ej: 20/12/2025)
@@ -2633,7 +2633,7 @@ function prepareAndPrint() {
                     </table>
                     
                     <div class="lbl-footer">
-                        <strong>Caducidad: ${expStr}</strong> (4 días). Conservar entre 2-8ºC protegido de la luz.<br>
+                        <strong>Caducidad: ${expStr}</strong>. Conservar entre 2-8ºC protegido de la luz.<br>
                         Validado por: _____________________________
                     </div>
                 </div>
