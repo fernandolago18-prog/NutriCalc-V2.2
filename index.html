@@ -27,25 +27,33 @@
         /* =========================================================
        ESTILOS DE IMPRESIÓN MEJORADOS (SIN CORTES BRUSCOS)
        ========================================================= */
-    @media print {
+   @media print {
         @page {
             margin: 1cm;
             size: A4 portrait;
         }
 
+        /* --- CORRECCIÓN CRÍTICA PARA MÓVILES --- */
+        html, body {
+            display: block !important; /* Desactiva el flex del body */
+            height: auto !important;   /* Elimina min-h-screen */
+            overflow: visible !important; /* Permite que el contenido desborde a nuevas páginas */
+            background: white !important;
+        }
+        
+        /* Asegurar que el contenedor principal no corte contenido */
+        #printable-area {
+            display: block !important;
+            width: 100% !important;
+            height: auto !important;
+            overflow: visible !important;
+            position: static !important;
+        }
+        /* --------------------------------------- */
+
         /* Ocultar interfaz */
         body > *:not(#printable-area) {
             display: none !important;
-        }
-
-        /* Mostrar reporte */
-        #printable-area {
-            display: block !important;
-            font-family: 'Inter', sans-serif;
-            color: black;
-            font-size: 11pt;
-            line-height: 1.3;
-            width: 100%;
         }
 
         /* BLOQUES PRINCIPALES: Evita que se corten por la mitad */
