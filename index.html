@@ -123,10 +123,10 @@
             break-before: page;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            height: 24cm; 
+            /* Cambia height fijo por min-height para evitar cortes si el papel varía */
+            min-height: 22cm; 
             width: 100%;
-            gap: 1cm;
+            gap: 0.5cm; /* Reducir gap para asegurar que quepa en móviles */
             padding-top: 0.5cm;
         }
 
