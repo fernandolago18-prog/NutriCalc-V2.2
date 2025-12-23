@@ -889,7 +889,7 @@
                                     </div>
                                     <div class="md:col-span-4">
                                         <label class="block text-xs font-medium text-slate-500 mb-1">Volumen (ml)</label>
-                                        <input type="number" id="vol-vit-4" class="w-full border-slate-300 rounded-lg shadow-sm p-2.5 border bg-white text-sm" placeholder="0">
+                                        <input type="number" id="vol-vit-4" oninput="calculateCompounding()" class="w-20 border-slate-300 rounded-md text-sm p-1 text-right" placeholder="ml">
                                     </div>
                                 </div>
                             </div>
@@ -1350,6 +1350,7 @@
                 }
             },
             fungibles: {
+                "jeringa_5": { nombre: "Jeringa 5 mL" }, 
                 "jeringa_10": { nombre: "Jeringa 10 mL" },
                 "jeringa_20": { nombre: "Jeringa 20 mL" },
                 "jeringa_30": { nombre: "Jeringa 30 mL" },
@@ -1494,6 +1495,8 @@
         function getBestSyringe(vol) {
             if (vol <= 0) return [];
             
+            // Lógica más precisa para volúmenes pequeños
+            if (vol <= 5) return ["Jeringa 5 mL"];
             if (vol <= 10) return ["Jeringa 10 mL"];
             if (vol <= 20) return ["Jeringa 20 mL"];
             if (vol <= 30) return ["Jeringa 30 mL"];
