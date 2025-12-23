@@ -2432,7 +2432,12 @@ function prepareAndPrint() {
                     if(sel.selectedIndex >= 0) name = sel.options[sel.selectedIndex].text;
                     else name = sel.value;
                 }
-                let syr = vol<=10?"10 ml":(vol<=20?"20 ml":(vol<=30?"30 ml":"50 ml"));
+                // CORRECCIÓN: Lógica actualizada para el informe (incluye 5ml y 2ml)
+                let syr = "50 ml";
+                if (vol <= 5) syr = "5 ml"; 
+                else if (vol <= 10) syr = "10 ml";
+                else if (vol <= 20) syr = "20 ml";
+                else if (vol <= 30) syr = "30 ml";
                 return { name, vol, syr };
             };
 
