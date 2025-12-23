@@ -2050,7 +2050,14 @@
             } else {
                 ibw = (alturaM * alturaM) * 22;
             }
-            let pesoCalculo = (imc > 30) ? ibw : peso;
+            // --- LÓGICA DE AJUSTE PARA OBESIDAD ---
+            let pesoCalculo = peso; // Por defecto usamos peso real
+            
+            if (imc > 30) {
+                // Si es obeso, calculamos el PESO AJUSTADO usando TU Peso Ideal
+                // Fórmula: Tu IBW + 25% del exceso de peso
+                pesoCalculo = ibw + ((peso - ibw) * 0.25);
+            }
 
             // 3. Cálculo de Kcal Base (Objetivo Teórico 100%)
             let baseTargetKcal = 0;
@@ -2062,17 +2069,17 @@
                 const isVent = document.getElementById('vent-mec').checked;
 
                 if (imc > 30 && imc <= 50 && tipo === 'normal') {
-                    baseTargetKcal = 14 * peso; 
-                    pesoCalculo = peso; 
-                } else if (imc > 50 && tipo === 'normal') {
-                    baseTargetKcal = 22 * ibw; 
-                } else if (tipo === 'sepsis') {
-                    baseTargetKcal = (fase === 'aguda') ? 20 * peso : 27.5 * peso; 
+                    baseTargetKcal = 25 * pesoCalculo; 
+                } 
+
+                else if (tipo === 'sepsis') {
+                    baseTargetKcal = (fase === 'aguda') ? 20 * pesoCalculo : 27.5 * pesoCalculo; 
                 } else if (tipo === 'hepatico') {
-                    baseTargetKcal = 19 * peso; 
+                    baseTargetKcal = 19 * pesoCalculo; 
                 } else {
-                    baseTargetKcal = (fase === 'aguda') ? 19 * peso : 27.5 * peso;
+                    baseTargetKcal = (fase === 'aguda') ? 19 * pesoCalculo : 27.5 * pesoCalculo;
                 }
+                
                 if (isVent && tipo === 'normal') baseTargetKcal = 22.5 * pesoCalculo;
 
             } else {
