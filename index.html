@@ -2107,8 +2107,8 @@
             // Aportes Externos (Propofol / Citrato) - Se restan de los gramos finales de bolsa
             const propofolMl = parseFloat(document.getElementById('propofol').value) || 0;
             const citratoMmol = parseFloat(document.getElementById('citrato').value) || 0;
-            const propofolKcal = propofolMl * 0.9; // 1ml 1% = 0.9 kcal (aprox lipidica pura)
-            const citratoKcal = citratoMmol * 2.4; // 1mmol citrato = ~2.4 kcal (glucosa eq)
+            const propofolKcal = propofolMl * 1.1; // 1ml 1% = 1.1 kcal (aprox lipidica pura)
+            const citratoKcal = citratoMmol * 0.59; // 1mmol citrato = 0.59 kcal (glucosa eq)
 
             // ===== LÓGICA NUEVA DE REALIMENTACIÓN =====
             if (hasRefeedingRisk) {
@@ -2172,7 +2172,7 @@
                     else if (tipo === 'sepsis') targetProtPerKg = (fase === 'aguda') ? 1.4 : 1.75;
                     else if (isVent) targetProtPerKg = 1.5;
                     else if (imc <= 30) targetProtPerKg = (fase === 'aguda') ? 1.35 : 1.75;
-                    else targetProtPerKg = (imc > 40) ? 2.5 : 2.0; 
+                    else targetProtPerKg = 1.3; 
                 } else {
                     const estres = document.getElementById('planta-estres').value;
                     if(estres === 'leve') targetProtPerKg = 1.1;
